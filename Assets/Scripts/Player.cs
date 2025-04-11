@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         float hAxis = Input.GetAxis("Horizontal");
 
         //Set Velocity of Rigidbody
-        rb.linearVelocity = new Vector2(hAxis * movespd, vAxis * movespd);
+        rb.velocity = new Vector2(hAxis * movespd, vAxis * movespd);
 
         if (hAxis < 0) sr.flipX = true;
         else if (hAxis > 0) sr.flipX = false;
