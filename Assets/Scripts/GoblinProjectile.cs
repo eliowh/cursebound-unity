@@ -20,7 +20,7 @@ public class GoblinProjectile : MonoBehaviour
             PlayerController player = collision.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.hp -= 10; // Or however much damage you want
+                player.TakeDamage(10); // Or however much damage you want
                 Debug.Log("Player hit by projectile! HP: " + player.hp);
             }
 

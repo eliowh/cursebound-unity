@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LibraryToHub.unity
     guid: a622198d0796d794f8a57beb59ce8a15
   - enabled: 1
-    path: Assets/Scenes/Maze1ToHub.unity
+    path: Assets/Scenes/RespawnToHub.unity
     guid: 7c1fbcd472beaa64488138f78bb323f4
   - enabled: 1
     path: Assets/Scenes/Maze2.unity

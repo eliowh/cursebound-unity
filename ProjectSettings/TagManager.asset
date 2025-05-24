@@ -9,6 +9,8 @@ TagManager:
   - OpenTrigger
   - HubOrderTrigger
   - Wall
+  - DeathScreen
+  - RespawnScreen
   layers:
   - Default
   - TransparentFX

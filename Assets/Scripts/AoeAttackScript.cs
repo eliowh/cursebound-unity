@@ -24,7 +24,7 @@ public class AoeAttackScript : MonoBehaviour
         {
             if (player != null && Vector2.Distance(transform.position, player.transform.position) < 0.5f)
             {
-                player.hp -= damage;
+                player.TakeDamage(damage);
                 Debug.Log("Player hit by delayed strike! HP: " + player.hp);
             }
 

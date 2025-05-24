@@ -4,6 +4,8 @@ using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -39,6 +41,10 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
     private float dashTime;
     private float lastDashTime = -Mathf.Infinity;
+
+    [Header("Death Settings")]
+    public string deathSceneName = "RespawnToHub";
+
 
     // Start is called before the first frame update
     void Start()
@@ -163,6 +169,29 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
     }
 
+    public void TakeDamage(int amount)
+    {
+        if (hp <= 0) return; // Already dead
+
+        hp -= amount;
+
+        if (hp <= 0)
+        {
+            hp = 0;
+            Die();
+        }
+    }
+    public void Die()
+    {
+        if (canMove) // prevent multiple calls
+        {
+            canMove = false;
+            animator.SetTrigger("Die"); // Play death animation
+
+            // Call UIManager to show death and respawn screens + load scene
+            UIManager.Instance.ShowDeathAndRespawn(deathSceneName);
+        }
+    }
 
 
 

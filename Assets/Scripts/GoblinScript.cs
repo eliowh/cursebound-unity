@@ -154,7 +154,7 @@ public class GoblinScript : MonoBehaviour
     {
         if (playerController != null)
         {
-            playerController.hp -= 15;
+            playerController.TakeDamage(15);
             Debug.Log("Goblin attacked! Player HP: " + playerController.hp);
         }
     }

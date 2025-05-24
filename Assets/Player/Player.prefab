@@ -274,6 +274,8 @@ MonoBehaviour:
   dashDuration: 0.2
   dashCooldown: 1.5
   dashEffectPrefab: {fileID: 9150323826041721810, guid: 72b71a63e19b7b54a845d4c0f61ddf2a, type: 3}
+  deathSceneName: RespawnToHub
+  DeathScreen: {fileID: 3072935735374292800, guid: be6b7849dcf59d540a3754bd355a1257, type: 3}
 --- !u!61 &6365359308030509266
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -32,10 +32,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (playerController.hp <= 0) {
-            SceneManager.LoadScene(sceneToLoad);
-        }
-    }
+    //void Update()
+    //{
+    //    if (playerController.hp <= 0) {
+    //        SceneManager.LoadScene(sceneToLoad);
+    //    }
+    //}
 }
