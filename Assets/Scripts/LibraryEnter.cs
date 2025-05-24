@@ -10,7 +10,7 @@ public class LibraryEnter : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         //Next area handling
         if (collision.gameObject.CompareTag("PlayerTrigger")) {
-            SceneManager.LoadScene(sceneToLoad);
+            UIManager.Instance.FadeAndLoadScene(sceneToLoad);
         }
     }
 }

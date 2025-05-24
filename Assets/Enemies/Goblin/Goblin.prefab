@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.7
+  patrolSpd: 0.4
   chaseRange: 1
   attackRange: 0.7
   attackCooldown: 2.5
@@ -294,6 +295,10 @@ MonoBehaviour:
   projectileCooldown: 2
   delayedStrikePrefab: {fileID: 6554502744670293497, guid: 20841077d97a6854fa7938ea06c5b8cc, type: 3}
   delayedStrikeCooldown: 5
+  patrolDirectionChangeMinTime: 2
+  patrolDirectionChangeMaxTime: 5
+  stopDurationMin: 1
+  stopDurationMax: 3
   hp: 100
 --- !u!50 &9096130851427585262
 Rigidbody2D:

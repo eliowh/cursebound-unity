@@ -38,5 +38,31 @@ public class AttackHitbox : MonoBehaviour
                 Debug.Log("Goblin Hit! HP left: " + goblin.hp);
             }
         }
+
+        if (other.CompareTag("Skelich"))
+        {
+            SkelichScript skelich = other.GetComponent<SkelichScript>();
+            if (skelich != null)
+            {
+                skelich.TakeDamage(swordDamage);
+                Debug.Log("Skelich Hit! HP left: " + skelich.hp);
+            }
+        }
+
+        if (other.CompareTag("Mimic"))
+        {
+            MimicScript mimic = other.GetComponent<MimicScript>();
+            if (mimic != null)
+            {
+                mimic.TakeDamage(swordDamage);
+                Debug.Log("Skelich Hit! HP left: " + mimic.hp);
+            }
+        }
+
+        if (other.CompareTag("Projectile"))
+        {
+            Destroy(other.gameObject);
+            Debug.Log("Enemy projectile destroyed by sword!");
+        }
     }
 }

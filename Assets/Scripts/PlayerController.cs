@@ -1,14 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-
 public class PlayerController : MonoBehaviour
 {
+    public GameObject deathParticlesPrefab;
     public float moveSpeed = 1f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
@@ -22,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     bool canMove = true;
+    private bool isDead = false;
 
     public AttackHitbox attackHitbox;
 
@@ -30,13 +29,12 @@ public class PlayerController : MonoBehaviour
     private float lastAttackTime = -Mathf.Infinity;
     private bool isAttacking = false;
 
-
     [Header("Dash Settings")]
     public float dashSpeed = 3f;
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
     public GameObject dashEffectPrefab;
-    private GameObject dashEffectInstance;
+    private bool isInvincible = false;
 
     private bool isDashing = false;
     private float dashTime;
@@ -45,8 +43,6 @@ public class PlayerController : MonoBehaviour
     [Header("Death Settings")]
     public string deathSceneName = "RespawnToHub";
 
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -56,66 +52,61 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Movement Handling
-        if (canMove && !isDashing) {
-
-            if (movementInput != Vector2.zero) {
+        if (canMove && !isDashing)
+        {
+            if (movementInput != Vector2.zero)
+            {
                 bool success = TryMove(movementInput);
-                
-                if (!success) {
-                    success = TryMove(new Vector2(movementInput.x, 0));
-                }
 
-                if (!success) {
+                if (!success)
+                    success = TryMove(new Vector2(movementInput.x, 0));
+
+                if (!success)
                     success = TryMove(new Vector2(0, movementInput.y));
-                }
 
                 animator.SetBool("isMoving", success);
-            } else {
+            }
+            else
+            {
                 animator.SetBool("isMoving", false);
             }
 
-            //Flip direction of sprite based on direction
             if (movementInput.x < 0) spriteRenderer.flipX = true;
             else if (movementInput.x > 0) spriteRenderer.flipX = false;
-
         }
-
     }
 
-    //Movement Handling
-    private bool TryMove(Vector2 direction) {
+    private bool TryMove(Vector2 direction)
+    {
+        if (direction != Vector2.zero)
+        {
+            int count = rb.Cast(direction, movementFilter, castCollisions, moveSpeed * Time.fixedDeltaTime + collisionOffset);
 
-        if (direction != Vector2.zero) {
-
-            //Raycast collisions
-            int count = rb.Cast(
-                direction,
-                movementFilter,
-                castCollisions,
-                moveSpeed * Time.fixedDeltaTime + collisionOffset
-            );
-
-            if (count == 0) {
+            if (count == 0)
+            {
                 rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
                 return true;
-            } else {
+            }
+            else
+            {
                 return false;
             }
-
-        } else {
-            //Can't move if there's no direction to move in
+        }
+        else
+        {
             return false;
         }
     }
 
-    //Movement Handling
-    void OnMove(InputValue movementValue) {
+    void OnMove(InputValue movementValue)
+    {
+        if (isDead) return;
         movementInput = movementValue.Get<Vector2>();
     }
 
     void OnDash()
     {
+        if (isDead) return;
         if (Time.time >= lastDashTime + dashCooldown && movementInput != Vector2.zero)
         {
             StartCoroutine(Dash());
@@ -125,12 +116,13 @@ public class PlayerController : MonoBehaviour
     IEnumerator Dash()
     {
         isDashing = true;
+        isInvincible = true;
+
         dashTime = dashDuration;
         lastDashTime = Time.time;
 
         Vector2 dashDirection = movementInput.normalized;
 
-        // Spawn a new effect for each dash
         if (dashEffectPrefab != null)
         {
             GameObject effect = Instantiate(dashEffectPrefab, transform.position, Quaternion.identity);
@@ -139,15 +131,12 @@ public class PlayerController : MonoBehaviour
             float offsetX = spriteRenderer.flipX ? 0.3f : -0.3f;
             effect.transform.localPosition = new Vector3(offsetX, 0.13f, 0);
 
-            // Flip sprite if needed
             SpriteRenderer sr = effect.GetComponent<SpriteRenderer>();
             if (sr != null) sr.flipX = spriteRenderer.flipX;
 
-            // Automatically destroy after duration (match animation length)
-            Destroy(effect, 0.4f); // Adjust this if your dash animation is longer
+            Destroy(effect, 0.4f);
         }
 
-        // Dash movement with wall collision
         while (dashTime > 0f)
         {
             float dashStep = dashSpeed * Time.fixedDeltaTime;
@@ -159,19 +148,20 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                break; // wall hit
+                break;
             }
 
             dashTime -= Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
 
+        isInvincible = false;
         isDashing = false;
     }
 
     public void TakeDamage(int amount)
     {
-        if (hp <= 0) return; // Already dead
+        if (hp <= 0 || isInvincible || isDead) return;
 
         hp -= amount;
 
@@ -181,24 +171,52 @@ public class PlayerController : MonoBehaviour
             Die();
         }
     }
+
     public void Die()
     {
-        if (canMove) // prevent multiple calls
-        {
-            canMove = false;
-            animator.SetTrigger("Die"); // Play death animation
+        if (isDead) return;
 
-            // Call UIManager to show death and respawn screens + load scene
-            UIManager.Instance.ShowDeathAndRespawn(deathSceneName);
+        isDead = true;
+        canMove = false;
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.white;
         }
+
+        StartCoroutine(PlayDeathEffect());
     }
 
+    private IEnumerator PlayDeathEffect()
+    {
+        yield return new WaitForSeconds(0.5f);
 
+        if (deathParticlesPrefab != null)
+        {
+            Vector3 spawnPos = transform.position;
+            spawnPos.z = 0f;
+            Instantiate(deathParticlesPrefab, spawnPos, Quaternion.identity);
+        }
 
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = false;
+        }
 
-    //Attack Handling
+        StartCoroutine(HandleDeathSequence());
+    }
+
+    private IEnumerator HandleDeathSequence()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        UIManager.Instance.ShowDeathAndRespawn(deathSceneName);
+    }
+
     void OnFire()
     {
+        if (isDead) return;
+
         if (Time.time >= lastAttackTime + attackCooldown && !isAttacking)
         {
             animator.SetTrigger("attack");
@@ -207,29 +225,35 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SwordAttack()
+    {
+        if (isDead) return;
 
-    public void SwordAttack() {
         LockMovement();
 
-        if (spriteRenderer.flipX == true) attackHitbox.AttackLeft();
-        else attackHitbox.AttackRight();
+        if (spriteRenderer.flipX)
+            attackHitbox.AttackLeft();
+        else
+            attackHitbox.AttackRight();
     }
 
     public void EndSwordAttack()
     {
+        if (isDead) return;
+
         UnlockMovement();
         attackHitbox.StopAttack();
         isAttacking = false;
     }
 
-
-    public void LockMovement() {
+    public void LockMovement()
+    {
         canMove = false;
     }
 
-    public void UnlockMovement() {
-        canMove = true;
+    public void UnlockMovement()
+    {
+        if (!isDead)
+            canMove = true;
     }
-    //End of Attack Handling
-
 }

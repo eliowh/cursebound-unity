@@ -33,6 +33,15 @@ EditorBuildSettings:
     path: Assets/Scenes/RespawnToHub.unity
     guid: 7c1fbcd472beaa64488138f78bb323f4
   - enabled: 1
+    path: Assets/Scenes/Maze2To1.unity
+    guid: d777052547ae22641a1df6ebc96818c4
+  - enabled: 1
     path: Assets/Scenes/Maze2.unity
+    guid: ec95b1d215e2af34daf6f3365fbd469b
+  - enabled: 1
+    path: Assets/Scenes/Maze3PassageTo2.unity
+    guid: cb689e11d6a83b748aabcecea13fa2fe
+  - enabled: 1
+    path: Assets/Scenes/Maze3Passage.unity
     guid: 9fcbdce229039334e9fa7148f62cb215
   m_configObjects: {}

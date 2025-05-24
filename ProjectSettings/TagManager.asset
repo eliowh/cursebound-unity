@@ -11,6 +11,9 @@ TagManager:
   - Wall
   - DeathScreen
   - RespawnScreen
+  - Skelich
+  - Projectile
+  - Mimic
   layers:
   - Default
   - TransparentFX

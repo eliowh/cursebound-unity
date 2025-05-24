@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f8baa5d2e66bd4784187abcdf7b214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticlesPrefab: {fileID: 5035973459344946650, guid: 251f85877a01a1a4abddf562175c651c, type: 3}
   moveSpeed: 1
   collisionOffset: 0.05
   movementFilter:
@@ -270,12 +271,11 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6365359308030509264}
   attackHitbox: {fileID: 4337113871104060274}
   attackCooldown: 0.3
-  dashSpeed: 2
+  dashSpeed: 2.5
   dashDuration: 0.2
-  dashCooldown: 1.5
+  dashCooldown: 0.75
   dashEffectPrefab: {fileID: 9150323826041721810, guid: 72b71a63e19b7b54a845d4c0f61ddf2a, type: 3}
   deathSceneName: RespawnToHub
-  DeathScreen: {fileID: 3072935735374292800, guid: be6b7849dcf59d540a3754bd355a1257, type: 3}
 --- !u!61 &6365359308030509266
 BoxCollider2D:
   m_ObjectHideFlags: 0

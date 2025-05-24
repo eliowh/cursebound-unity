@@ -3,6 +3,7 @@ using UnityEngine;
 public class GoblinScript : MonoBehaviour
 {
     public float moveSpeed = .7f;
+    public float patrolSpd = .4f;
     public float chaseRange = 1f;       // Add this for chase range limit
     public float attackRange = .5f;
     public float attackCooldown = 2f;
@@ -37,6 +38,16 @@ public class GoblinScript : MonoBehaviour
     [Header("Patrol Settings")]
     private int patrolDirection = 1;
 
+    [Header("Patrol Random Switch & Stop Settings")]
+    public float patrolDirectionChangeMinTime = 2f;
+    public float patrolDirectionChangeMaxTime = 5f;
+    public float stopDurationMin = 1f;
+    public float stopDurationMax = 3f;
+
+    private float patrolDirectionChangeTimer = 0f;
+    private bool isStopped = false;
+    private float stopTimer = 0f;
+
     public int hp = 100;
 
     void Start()
@@ -46,45 +57,48 @@ public class GoblinScript : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
+        patrolDirection = Random.value < 0.5f ? -1 : 1;
+        ResetPatrolDirectionChangeTimer();
     }
 
     void Update()
-{
-    if (isDead || player == null || playerController.hp <= 0) return;
-
-    if (isKnockedBack)
     {
-        knockbackTimer -= Time.deltaTime;
-        if (knockbackTimer <= 0f)
+        if (isDead || player == null || playerController.hp <= 0) return;
+
+        if (isKnockedBack)
         {
-            isKnockedBack = false;
-            rb.velocity = Vector2.zero;
+            knockbackTimer -= Time.deltaTime;
+            if (knockbackTimer <= 0f)
+            {
+                isKnockedBack = false;
+                rb.velocity = Vector2.zero;
+            }
+            return;
         }
-        return;
-    }
 
-    float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-    if (distanceToPlayer <= chaseRange)
-    {
-        // Chase logic
-        ChasePlayer();
-        StopShooting(); // Stop projectiles while chasing
-        SetStaffVisible(false);
-    }
-    else if (distanceToPlayer <= projectileRange)
-    {
-        // Stop moving and shoot
-        animator.SetBool("isMoving", false);
-        ShootAtPlayer();
-        CastDelayedStrike();
-        SetStaffVisible(true);
-    }
-    else
-    {
-        StopShooting();
-        SetStaffVisible(false);
-        Patrol();
+        if (distanceToPlayer <= chaseRange)
+        {
+            // Chase logic
+            ChasePlayer();
+            StopShooting(); // Stop projectiles while chasing
+            SetStaffVisible(false);
+        }
+        else if (distanceToPlayer <= projectileRange)
+        {
+            // Stop moving and shoot
+            animator.SetBool("isMoving", false);
+            ShootAtPlayer();
+            CastDelayedStrike();
+            SetStaffVisible(true);
+        }
+        else
+        {
+            StopShooting();
+            SetStaffVisible(false);
+            Patrol();
+            HandleRandomPatrolDirectionChange();
         }
     }
 
@@ -93,18 +107,66 @@ public class GoblinScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Goblin"))
         {
             patrolDirection *= -1;
+            ResetPatrolDirectionChangeTimer();
         }
     }
+
     void Patrol()
     {
-        // Move left or right
-        Vector2 move = new Vector2(patrolDirection * moveSpeed, 0);
-        transform.position += (Vector3)(move * Time.deltaTime);
+        if (isStopped)
+        {
+            // Standing still (idle)
+            rb.velocity = Vector2.zero;
+            animator.SetBool("isMoving", false);
+            animator.SetFloat("moveX", 0);
+            animator.SetFloat("moveY", 0);
 
-        // Animate movement and set direction parameters (like chase)
-        animator.SetBool("isMoving", true);
-        animator.SetFloat("moveX", patrolDirection);
-        animator.SetFloat("moveY", 0);
+            stopTimer -= Time.deltaTime;
+            if (stopTimer <= 0f)
+            {
+                isStopped = false;
+                ResetPatrolDirectionChangeTimer();
+            }
+        }
+        else
+        {
+            // Moving left or right
+            Vector2 move = new Vector2(patrolDirection * patrolSpd, 0);
+            transform.position += (Vector3)(move * Time.deltaTime);
+
+            animator.SetBool("isMoving", true);
+            animator.SetFloat("moveX", patrolDirection);
+            animator.SetFloat("moveY", 0);
+
+            if (patrolDirectionChangeTimer <= 0f)
+            {
+                if (Random.value > 0.5f)
+                {
+                    // Start stopping (idle)
+                    isStopped = true;
+                    stopTimer = Random.Range(stopDurationMin, stopDurationMax);
+                }
+                else
+                {
+                    // Change direction normally
+                    patrolDirection *= -1;
+                    ResetPatrolDirectionChangeTimer();
+                }
+            }
+        }
+    }
+
+    void HandleRandomPatrolDirectionChange()
+    {
+        if (!isStopped)
+        {
+            patrolDirectionChangeTimer -= Time.deltaTime;
+        }
+    }
+
+    void ResetPatrolDirectionChangeTimer()
+    {
+        patrolDirectionChangeTimer = Random.Range(patrolDirectionChangeMinTime, patrolDirectionChangeMaxTime);
     }
 
     private void SetStaffVisible(bool isVisible)
@@ -149,7 +211,6 @@ public class GoblinScript : MonoBehaviour
         lastProjectileTime = Time.time; // Prevents shooting immediately after exiting chase range
     }
 
-
     private void AttackPlayer()
     {
         if (playerController != null)
@@ -183,6 +244,7 @@ public class GoblinScript : MonoBehaviour
         isKnockedBack = true;
         knockbackTimer = knockbackDuration;
     }
+
     private void ShootProjectile()
     {
         if (projectilePrefab == null || projectileSpawnPoint == null) return;
@@ -210,7 +272,6 @@ public class GoblinScript : MonoBehaviour
         }
     }
 
-
     private void Die()
     {
         isDead = true;
@@ -232,7 +293,6 @@ public class GoblinScript : MonoBehaviour
         Destroy(gameObject, 1.5f);
     }
 
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -241,5 +301,4 @@ public class GoblinScript : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, projectileRange);
     }
-
 }
