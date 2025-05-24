@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80081ccbe0fc1474b9d659d1e0e189d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Maze3PassageTo2
+  sceneToLoad: Maze3.1To2
 --- !u!4 &473257459
 Transform:
   m_ObjectHideFlags: 0
