@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 384770b563fdcfa4e952f17a547b3bbc
+guid: 83ee68168e13a384484e9bb2276e9817
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,146 +117,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SKELICH IDLE_0
+      name: BLACKSMITH IDLE_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 5
-        width: 27
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 20
+        y: 16
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1802969}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
-      physicsShape:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 643b4e8fe0893724185f423f6fdc6638
-      internalID: -1861591941
+      spriteID: dd50adeb38d7d204e999cffc536a0921
+      internalID: 1856751433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKELICH IDLE_1
+      name: BLACKSMITH IDLE_1
       rect:
         serializedVersion: 2
-        x: 81
-        y: 1
-        width: 29
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 84
+        y: 16
+        width: 25
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1802969}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
-      physicsShape:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28b2503629d4b4343832f0d4baf143dc
-      internalID: 2088103364
+      spriteID: b200b3499190e7c4dba52100a2e0cd67
+      internalID: 1220799501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SKELICH IDLE_2
+      name: BLACKSMITH IDLE_2
       rect:
         serializedVersion: 2
-        x: 145
-        y: 1
-        width: 27
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 148
+        y: 16
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1802969}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
-      physicsShape:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f02fa90dde41caa4f99e82d998821125
-      internalID: 910996668
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SKELICH IDLE_3
-      rect:
-        serializedVersion: 2
-        x: 206
-        y: 1
-        width: 29
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
-      physicsShape:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
-      tessellationDetail: 0
-      bones: []
-      spriteID: d03a8034d2a38654c9347884ed30cff0
-      internalID: -1309083818
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SKELICH IDLE_4
-      rect:
-        serializedVersion: 2
-        x: 273
-        y: 5
-        width: 27
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
-      physicsShape:
-      - - {x: 0, y: -32}
-        - {x: 32, y: 0}
-        - {x: 0, y: 32}
-        - {x: -32, y: 0}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4db9775ac2f23f74683ea53abbf32732
-      internalID: -1048179891
+      spriteID: 3b965c165cb40e24fa970c6a70d15373
+      internalID: -34635194
       vertices: []
       indices: 
       edges: []
@@ -272,11 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SKELICH IDLE_0: -1861591941
-      SKELICH IDLE_1: 2088103364
-      SKELICH IDLE_2: 910996668
-      SKELICH IDLE_3: -1309083818
-      SKELICH IDLE_4: -1048179891
+      BLACKSMITH IDLE_0: 1856751433
+      BLACKSMITH IDLE_1: 1220799501
+      BLACKSMITH IDLE_2: -34635194
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

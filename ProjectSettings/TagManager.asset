@@ -14,6 +14,7 @@ TagManager:
   - Skelich
   - Projectile
   - Mimic
+  - HP Bar
   layers:
   - Default
   - TransparentFX

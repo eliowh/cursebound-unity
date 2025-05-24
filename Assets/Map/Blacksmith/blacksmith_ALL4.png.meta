@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8bbc5bd3fdf41d642b6d3e73f28d3a66
+guid: 2109dfb18af7e204e9134230bffbf013
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GOBLIN-Death_0
+      name: blacksmith_ALL4_0
       rect:
         serializedVersion: 2
-        x: 71
-        y: 68
-        width: 28
-        height: 37
+        x: 646
+        y: 688
+        width: 300
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,124 +131,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bce965a1b66ae39418e81120b14a0f75
-      internalID: -1679515574
+      spriteID: ec1437a6b98c85a46b4e33303893fb36
+      internalID: 1333888304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GOBLIN-Death_1
+      name: blacksmith_ALL4_1
       rect:
         serializedVersion: 2
-        x: 237
-        y: 68
-        width: 26
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7790e197172c2fe469078d1b2d9e3db0
-      internalID: 2015427590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GOBLIN-Death_2
-      rect:
-        serializedVersion: 2
-        x: 401
-        y: 68
-        width: 26
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6b470b943fc0cd42968cdeff9305ce6
-      internalID: 1387079418
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GOBLIN-Death_3
-      rect:
-        serializedVersion: 2
-        x: 565
-        y: 89
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9102f37685b621944a9b8c59e40706e7
-      internalID: 81192951
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GOBLIN-Death_4
-      rect:
-        serializedVersion: 2
-        x: 568
-        y: 68
-        width: 21
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f98673576107c54c8f3e953ee2d9de9
-      internalID: 2109618224
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GOBLIN-Death_5
-      rect:
-        serializedVersion: 2
-        x: 570
-        y: 86
-        width: 7
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2dd6313d3cd7a1e4f8c7bc8e676474ac
-      internalID: 2025081572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GOBLIN-Death_6
-      rect:
-        serializedVersion: 2
-        x: 571
-        y: 95
-        width: 8
+        x: 766
+        y: 659
+        width: 50
         height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -257,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95705ca8bed7d3545b7b943d100bc441
-      internalID: -966970682
+      spriteID: 6666f59d42eb8c5419fbfb3a4ffd8738
+      internalID: -2043112317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GOBLIN-Death_7
+      name: blacksmith_ALL4_2
       rect:
         serializedVersion: 2
-        x: 576
-        y: 92
-        width: 13
-        height: 13
+        x: 126
+        y: 589
+        width: 42
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25252e93f28b24d4593979bafa36d5c1
-      internalID: -1461129493
+      spriteID: 5489733b40d7f7d42ae9a50ea7cbe44c
+      internalID: -1907954435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GOBLIN-Death_8
+      name: blacksmith_ALL4_3
       rect:
         serializedVersion: 2
-        x: 732
-        y: 68
-        width: 21
-        height: 37
+        x: 654
+        y: 560
+        width: 110
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80f1c5879958e7a41bf4b2bea1ebd836
-      internalID: 454345862
+      spriteID: 55414bd4c23d7bb4dbc7d5a1f2ed79d1
+      internalID: -988573765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GOBLIN-Death_9
+      name: blacksmith_ALL4_4
       rect:
         serializedVersion: 2
-        x: 749
-        y: 77
-        width: 4
-        height: 5
+        x: 812
+        y: 581
+        width: 118
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,8 +215,218 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8328cccdbcd463f42a222d06d4e02e6d
-      internalID: 603209756
+      spriteID: eaec07b801df6a54abc52cf205f0b294
+      internalID: -1866885260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 517
+        width: 50
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1925fea179fca4243969ac0d0b411579
+      internalID: -2002253267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_6
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 531
+        width: 48
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 784a818bb14f9b84daf684d6b1f4460b
+      internalID: 2090491282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 447
+        width: 23
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbaf356e07672c641b54386c1654b755
+      internalID: 1180069048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_8
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 447
+        width: 23
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efa8c26f2fedd7c46bbc5ef3861f19a4
+      internalID: 1857643106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_9
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 448
+        width: 23
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d314d2f4e81a6dd4fb5b4aebfb70b4a1
+      internalID: -748001093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_10
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 448
+        width: 23
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfa2c0bb82d9ec5449506c4bebcfc5f5
+      internalID: -1672884979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_11
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 474
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc97ae015497834b9c281d675ea35b5
+      internalID: -1904882717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_12
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 485
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 701c0983f0663e148a9911f61ec6c443
+      internalID: -1307197539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_13
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 486
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1c2e2d37066ca9498be077a5f831708
+      internalID: -1459772324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blacksmith_ALL4_14
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 486
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a542b1770888744ba3f6e4f2dc26d23
+      internalID: 1836193299
       vertices: []
       indices: 
       edges: []
@@ -337,16 +442,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GOBLIN-Death_0: -1679515574
-      GOBLIN-Death_1: 2015427590
-      GOBLIN-Death_2: 1387079418
-      GOBLIN-Death_3: 81192951
-      GOBLIN-Death_4: 2109618224
-      GOBLIN-Death_5: 2025081572
-      GOBLIN-Death_6: -966970682
-      GOBLIN-Death_7: -1461129493
-      GOBLIN-Death_8: 454345862
-      GOBLIN-Death_9: 603209756
+      blacksmith_ALL4_0: 1333888304
+      blacksmith_ALL4_1: -2043112317
+      blacksmith_ALL4_10: -1672884979
+      blacksmith_ALL4_11: -1904882717
+      blacksmith_ALL4_12: -1307197539
+      blacksmith_ALL4_13: -1459772324
+      blacksmith_ALL4_14: 1836193299
+      blacksmith_ALL4_2: -1907954435
+      blacksmith_ALL4_3: -988573765
+      blacksmith_ALL4_4: -1866885260
+      blacksmith_ALL4_5: -2002253267
+      blacksmith_ALL4_6: 2090491282
+      blacksmith_ALL4_7: 1180069048
+      blacksmith_ALL4_8: 1857643106
+      blacksmith_ALL4_9: -748001093
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     public GameObject DeathScreen;      // Assign in inspector
     public GameObject RespawnScreenUI;  // Assign in inspector
 
+    public GameObject hpUIContainer; // Assign in Inspector
+    public UnityEngine.UI.Slider hpSlider; // HP bar
+    public UnityEngine.UI.Text hpText;
+
     [SerializeField] Animator sceneTransition;
 
     private string sceneToLoad;
@@ -79,6 +83,9 @@ public class UIManager : MonoBehaviour
 
         if (RespawnScreenUI == null)
             RespawnScreenUI = GameObject.FindWithTag("RespawnScreen");
+
+        if (hpSlider == null)
+            hpSlider = GameObject.FindWithTag("HPBar")?.GetComponent<UnityEngine.UI.Slider>();
     }
 
 
@@ -126,6 +133,15 @@ public class UIManager : MonoBehaviour
         sceneTransition.SetTrigger("Start");
 
         yield return new WaitForSecondsRealtime(1f); // optional fade in delay
+    }
+
+    public void UpdateHP(int currentHP, int maxHP)
+    {
+        if (hpSlider != null)
+            hpSlider.value = (float)currentHP / maxHP;
+
+        if (hpText != null)
+            hpText.text = currentHP + " / " + maxHP;
     }
 
 

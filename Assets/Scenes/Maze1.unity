@@ -547,6 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitGate: {fileID: 1457899824}
+  exitTrigger: {fileID: 0}
   maze1GoblinsToDefeat: 6
   skelichToDefeat: 0
   goblinsToDefeat: 0
@@ -1079,6 +1080,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 923801282935204639, guid: 3853dfa97560fa941bf3d9920f7c4d2a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 923801282935204639, guid: 3853dfa97560fa941bf3d9920f7c4d2a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 923801282935204639, guid: 3853dfa97560fa941bf3d9920f7c4d2a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244124959280587430, guid: 3853dfa97560fa941bf3d9920f7c4d2a, type: 3}
+      propertyPath: m_Name
+      value: Fade Transition
+      objectReference: {fileID: 0}
     - target: {fileID: 6033169270794621575, guid: 3853dfa97560fa941bf3d9920f7c4d2a, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1126,6 +1143,14 @@ PrefabInstance:
     - target: {fileID: 6033169270794621689, guid: 3853dfa97560fa941bf3d9920f7c4d2a, type: 3}
       propertyPath: m_Name
       value: UI Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6405843512401418718, guid: 3853dfa97560fa941bf3d9920f7c4d2a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6405843512401418718, guid: 3853dfa97560fa941bf3d9920f7c4d2a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3853dfa97560fa941bf3d9920f7c4d2a, type: 3}

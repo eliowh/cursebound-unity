@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 1f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
-    public int hp = 100;
+    public int maxHP = 200;
+    public int hp;
     public int damageToGoblin = 50;
 
     Vector2 movementInput;
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        hp = maxHP;
+        UIManager.Instance?.UpdateHP(hp, maxHP);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -164,12 +167,15 @@ public class PlayerController : MonoBehaviour
         if (hp <= 0 || isInvincible || isDead) return;
 
         hp -= amount;
+        if (hp < 0) hp = 0;
+
+        UIManager.Instance?.UpdateHP(hp, maxHP);
 
         if (hp <= 0)
         {
-            hp = 0;
             Die();
         }
+
     }
 
     public void Die()
