@@ -7,6 +7,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (UIManager.Instance != null)
+        {
+            Destroy(UIManager.Instance.gameObject);
+        }
         SceneManager.LoadScene(gameSceneName);
     }
 

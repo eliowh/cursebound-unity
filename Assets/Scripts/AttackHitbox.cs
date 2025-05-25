@@ -59,6 +59,16 @@ public class AttackHitbox : MonoBehaviour
             }
         }
 
+        if (other.CompareTag("Boss"))
+        {
+            BossScript boss = other.GetComponent<BossScript>();
+            if (boss != null)
+            {
+                boss.TakeDamage(swordDamage);
+                Debug.Log("Boss Hit! HP left: " + boss.currentHealth);
+            }
+        }
+
         if (other.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);

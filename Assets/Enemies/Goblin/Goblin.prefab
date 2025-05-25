@@ -292,7 +292,7 @@ MonoBehaviour:
   projectileRange: 1.5
   projectilePrefab: {fileID: 5687105811369329639, guid: e744894ad49b34c40a804d2fee0b4725, type: 3}
   projectileSpawnPoint: {fileID: 9096130851381875143}
-  projectileCooldown: 2
+  projectileCooldown: 1.25
   delayedStrikePrefab: {fileID: 6554502744670293497, guid: 20841077d97a6854fa7938ea06c5b8cc, type: 3}
   delayedStrikeCooldown: 5
   patrolDirectionChangeMinTime: 2

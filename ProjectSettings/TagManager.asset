@@ -15,6 +15,7 @@ TagManager:
   - Projectile
   - Mimic
   - HP Bar
+  - Boss
   layers:
   - Default
   - TransparentFX

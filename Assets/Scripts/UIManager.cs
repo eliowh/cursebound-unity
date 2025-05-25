@@ -9,13 +9,12 @@ public class UIManager : MonoBehaviour
     public GameObject DeathScreen;      // Assign in inspector
     public GameObject RespawnScreenUI;  // Assign in inspector
 
-    public GameObject hpUIContainer; // Assign in Inspector
     public UnityEngine.UI.Slider hpSlider; // HP bar
-    public UnityEngine.UI.Text hpText;
 
     [SerializeField] Animator sceneTransition;
 
     private string sceneToLoad;
+    private GameObject vignetteInstance;
 
     void Awake()
     {
@@ -28,6 +27,15 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject); // Prevent duplicates
         }
+        if (vignetteInstance == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("GlobalVignette"); // Must match name
+            if (prefab != null)
+            {
+                vignetteInstance = Instantiate(prefab);
+                DontDestroyOnLoad(vignetteInstance);
+            }
+        }
     }
 
     public void ShowDeathAndRespawn(string sceneName)
@@ -37,12 +45,12 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator DeathRespawnSequence(string sceneName)
     {
-        Time.timeScale = 0f; // Pause AFTER animation plays
+        Time.timeScale = 0f;
 
         if (DeathScreen != null)
             DeathScreen.SetActive(true);
 
-        yield return new WaitForSecondsRealtime(2.5f); // Show death UI
+        yield return new WaitForSecondsRealtime(2.5f);
 
         if (DeathScreen != null)
             DeathScreen.SetActive(false);
@@ -50,7 +58,7 @@ public class UIManager : MonoBehaviour
         if (RespawnScreenUI != null)
             RespawnScreenUI.SetActive(true);
 
-        yield return new WaitForSecondsRealtime(1.0f); // Delay before switching scene
+        yield return new WaitForSecondsRealtime(1.0f);
 
         Time.timeScale = 1f;
 
@@ -58,12 +66,11 @@ public class UIManager : MonoBehaviour
         while (!asyncLoad.isDone)
             yield return null;
 
-        yield return new WaitForSecondsRealtime(1.0f); // Optional delay after loading
+        yield return new WaitForSecondsRealtime(1.0f);
 
         if (RespawnScreenUI != null)
             RespawnScreenUI.SetActive(false);
     }
-
 
     void OnEnable()
     {
@@ -77,38 +84,33 @@ public class UIManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Try to find new references to the UI if null
+        
+        // Reassign UI references
         if (DeathScreen == null)
-            DeathScreen = GameObject.FindWithTag("DeathScreen"); // Tag your new canvas' death UI
+            DeathScreen = GameObject.FindWithTag("DeathScreen");
 
         if (RespawnScreenUI == null)
             RespawnScreenUI = GameObject.FindWithTag("RespawnScreen");
 
         if (hpSlider == null)
-            hpSlider = GameObject.FindWithTag("HPBar")?.GetComponent<UnityEngine.UI.Slider>();
+            hpSlider = GameObject.FindWithTag("HP Bar")?.GetComponent<UnityEngine.UI.Slider>();
+
     }
 
 
     IEnumerator LoadSceneWithTransition()
     {
-        // Play fade out animation
         sceneTransition.SetTrigger("End");
-
-        // Wait for the animation length before continuing
-        // Adjust this time to your animation length or better use animation events
         yield return new WaitForSecondsRealtime(1f);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
-
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
 
-        // Play fade in animation
         sceneTransition.SetTrigger("Start");
-
-        yield return new WaitForSecondsRealtime(1f); // Wait for fade-in animation to finish
+        yield return new WaitForSecondsRealtime(1f);
     }
 
     public void FadeAndLoadScene(string sceneName)
@@ -118,31 +120,20 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator FadeAndLoadRoutine(string sceneName)
     {
-        // Trigger fade out animation on the fade UI
         sceneTransition.SetTrigger("End");
+        yield return new WaitForSecondsRealtime(1f);
 
-        // Wait for animation duration
-        yield return new WaitForSecondsRealtime(1f); // match your animation length
-
-        // Load scene async
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         while (!asyncLoad.isDone)
             yield return null;
 
-        // Trigger fade in animation
         sceneTransition.SetTrigger("Start");
-
-        yield return new WaitForSecondsRealtime(1f); // optional fade in delay
+        yield return new WaitForSecondsRealtime(1f);
     }
 
     public void UpdateHP(int currentHP, int maxHP)
     {
         if (hpSlider != null)
             hpSlider.value = (float)currentHP / maxHP;
-
-        if (hpText != null)
-            hpText.text = currentHP + " / " + maxHP;
     }
-
-
 }
