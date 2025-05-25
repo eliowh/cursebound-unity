@@ -13,6 +13,7 @@ public class VictoryScreenManager : MonoBehaviour
     public GameObject playerHPBar;
     public string gameSceneName = "MainMenu";
 
+    public float delayBeforeFreeze = 1f;
     public float fadeDuration = 2f;
     public float victoryTextDuration = 2f;
     public float thankYouDelay = 1f;
@@ -33,11 +34,14 @@ public class VictoryScreenManager : MonoBehaviour
 
     IEnumerator VictoryFlow()
     {
-        // Hide Player HP bar
-        if (playerHPBar != null)
+        // Hide Player HP bar through UIManager
+        if (UIManager.Instance != null)
+            UIManager.Instance.HideHPBar();
+        else if (playerHPBar != null)
             playerHPBar.SetActive(false);
 
-        // Freeze time
+        yield return new WaitForSeconds(delayBeforeFreeze);
+
         Time.timeScale = 0f;
 
         // Fade in screen using unscaled time
@@ -52,18 +56,16 @@ public class VictoryScreenManager : MonoBehaviour
 
         fadeImage.raycastTarget = false;
 
-        // Show victory text
         victoryText.gameObject.SetActive(true);
         yield return new WaitForSecondsRealtime(victoryTextDuration);
         victoryText.gameObject.SetActive(false);
 
-        // Delay before thank you
         yield return new WaitForSecondsRealtime(thankYouDelay);
 
-        // Show thank you text and main menu button
         thankYouText.gameObject.SetActive(true);
         mainMenuButton.gameObject.SetActive(true);
     }
+
 
     public void ReturnToMainMenu()
     {

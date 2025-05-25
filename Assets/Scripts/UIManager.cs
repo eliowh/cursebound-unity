@@ -113,6 +113,18 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
     }
 
+    public void HideHPBar()
+    {
+        if (hpSlider != null)
+            hpSlider.gameObject.SetActive(false);
+    }
+
+    public void ShowHPBar()
+    {
+        if (hpSlider != null)
+            hpSlider.gameObject.SetActive(true);
+    }
+
     public void FadeAndLoadScene(string sceneName)
     {
         StartCoroutine(FadeAndLoadRoutine(sceneName));
