@@ -215,6 +215,7 @@ public class GoblinScript : MonoBehaviour
     {
         if (playerController != null)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.goblinAttackSFX);
             playerController.TakeDamage(15);
             Debug.Log("Goblin attacked! Player HP: " + playerController.hp);
         }
@@ -224,6 +225,7 @@ public class GoblinScript : MonoBehaviour
     {
         if (isDead) return;
 
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.onhitSFX, 1.5f);
         hp -= damage;
         Debug.Log("Goblin took " + damage + " damage! Remaining HP: " + hp);
 
@@ -276,6 +278,7 @@ public class GoblinScript : MonoBehaviour
     {
         isDead = true;
         rb.velocity = Vector2.zero;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.goblinDeathSFX);
         animator.SetBool("isMoving", false);
         animator.SetTrigger("Die");
 

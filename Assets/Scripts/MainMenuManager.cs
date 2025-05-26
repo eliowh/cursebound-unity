@@ -11,6 +11,7 @@ public class MainMenuManager : MonoBehaviour
         {
             Destroy(UIManager.Instance.gameObject);
         }
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.bgMusicRegularArea);
         SceneManager.LoadScene(gameSceneName);
     }
 

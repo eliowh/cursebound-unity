@@ -183,7 +183,7 @@ public class SkelichScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isDead) return;
-
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.onhitSFX, 1.5f);
         hp -= damage;
         Debug.Log("Skelich took " + damage + " damage! Remaining HP: " + hp);
 
@@ -213,7 +213,7 @@ public class SkelichScript : MonoBehaviour
         if (isDead) return;
         isDead = true;
         canMove = false;
-
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.skelichDeathSFX);
         rb.velocity = Vector2.zero;
         animator.SetBool("isMoving", false);
         animator.SetBool("isAttacking", false);

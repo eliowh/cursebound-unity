@@ -862,6 +862,7 @@ MonoBehaviour:
   mainMenuButton: {fileID: 1491723865}
   playerHPBar: {fileID: 1357316849}
   gameSceneName: MainMenu
+  delayBeforeFreeze: 1
   fadeDuration: 2
   victoryTextDuration: 2
   thankYouDelay: 1

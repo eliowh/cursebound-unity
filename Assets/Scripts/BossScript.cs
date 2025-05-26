@@ -173,7 +173,7 @@ public class BossScript : MonoBehaviour
     public void TakeDamage(int amount)
     {
         if (isDead) return;
-
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.onhitSFX, 1.5f);
         currentHealth -= amount;
         UpdateHealthBar();
         Debug.Log("Boss took damage: " + amount);
@@ -188,6 +188,7 @@ public class BossScript : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.bossDeathSFX, 1.5f);
         StopAllCoroutines();
 
         animator.SetBool("IsAttacking", false);

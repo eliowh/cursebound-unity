@@ -16,7 +16,7 @@ public class BossAOE : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         aoeCollider = GetComponent<Collider2D>();
-
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.bossAttackSFX, .2f);
         aoeCollider.enabled = false; // Disable during summon
         StartCoroutine(SummonThenLoopThenDisappear());
     }

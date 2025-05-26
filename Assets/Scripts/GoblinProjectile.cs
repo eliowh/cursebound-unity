@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class GoblinProjectile : MonoBehaviour
 {
+    private void Start()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.goblinAttackSFX, 1.5f);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Wall"))

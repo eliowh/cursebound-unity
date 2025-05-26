@@ -93,8 +93,8 @@ public class MimicScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.onhitSFX, 1.5f);
         hp -= damage;
-
         if (hp <= 0)
         {
             StartCoroutine(PlayDeathEffect());
@@ -103,6 +103,7 @@ public class MimicScript : MonoBehaviour
 
     private IEnumerator PlayDeathEffect()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.mimicDeathSFX);
         yield return new WaitForSeconds(0.2f);
 
         if (deathParticlesPrefab != null)

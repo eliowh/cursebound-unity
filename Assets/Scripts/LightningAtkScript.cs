@@ -14,6 +14,7 @@ public class LightningAtkScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.mimicAttackSFX);
     }
 
     void Update()

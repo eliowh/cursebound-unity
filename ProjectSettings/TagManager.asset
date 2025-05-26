@@ -16,6 +16,7 @@ TagManager:
   - Mimic
   - HP Bar
   - Boss
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

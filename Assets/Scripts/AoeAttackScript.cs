@@ -14,6 +14,7 @@ public class AoeAttackScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
+        Invoke(nameof(PlayAttackSFX), 1f);
     }
 
     void Update()
@@ -33,5 +34,9 @@ public class AoeAttackScript : MonoBehaviour
             // Optional: destroy with delay to let animation finish
             Destroy(gameObject, 0.5f);
         }
+    }
+    void PlayAttackSFX()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.goblinpurpleAttackSFX, 0.5f);
     }
 }

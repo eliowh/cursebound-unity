@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     Animator animator;
     public SpriteRenderer spriteRenderer;
+    private float footstepCooldown = 0.3f;
+    private float lastFootstepTime = 0f;
 
     bool canMove = true;
     private bool isDead = false;
@@ -77,6 +79,15 @@ public class PlayerController : MonoBehaviour
             if (movementInput.x < 0) spriteRenderer.flipX = true;
             else if (movementInput.x > 0) spriteRenderer.flipX = false;
         }
+
+        if (movementInput != Vector2.zero && canMove && !isDashing)
+        {
+            if (Time.time > lastFootstepTime + footstepCooldown)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.footstepSFX);
+                lastFootstepTime = Time.time;
+            }
+        }
     }
 
     private bool TryMove(Vector2 direction)
@@ -120,7 +131,7 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = true;
         isInvincible = true;
-
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.dashSFX);
         dashTime = dashDuration;
         lastDashTime = Time.time;
 
@@ -166,6 +177,7 @@ public class PlayerController : MonoBehaviour
     {
         if (hp <= 0 || isInvincible || isDead) return;
 
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.onhitSFX, 1.5f);
         hp -= amount;
         if (hp < 0) hp = 0;
 
@@ -181,10 +193,10 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         if (isDead) return;
-
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.deathSFX, 2f);
         isDead = true;
         canMove = false;
-
+        
         if (spriteRenderer != null)
         {
             spriteRenderer.color = Color.white;
@@ -241,6 +253,8 @@ public class PlayerController : MonoBehaviour
             attackHitbox.AttackLeft();
         else
             attackHitbox.AttackRight();
+
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.swordSlashSFX);
     }
 
     public void EndSwordAttack()

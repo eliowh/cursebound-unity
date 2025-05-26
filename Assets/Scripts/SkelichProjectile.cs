@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class SkelichProjectile : MonoBehaviour
 {
+    private void Start()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.skelichAttackSFX, .5f);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Wall"))
@@ -21,5 +25,9 @@ public class SkelichProjectile : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }
